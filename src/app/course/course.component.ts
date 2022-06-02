@@ -8,10 +8,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./course.component.css']
 })
 export class CourseComponent implements OnInit {
-
+  data:any;
   public empForm!: FormGroup;
   courseArray!:Course[];
-
+  editMode:boolean=false;
+  visible:boolean = true;
+  mvisible:boolean = true;
+  buttonShow:boolean=true;
   constructor(private courseService:CourseService,private fb:FormBuilder) { }
 
   ngOnInit(): void {
@@ -28,24 +31,44 @@ export class CourseComponent implements OnInit {
     
   }
   onSelectCourse(courseItem:any){
+    this.data=courseItem;
+   
+    
+    this.mvisible = this.mvisible?false:true;
+    this.visible = this.visible?false:true;
+    this.buttonShow = this.buttonShow?false:true;
 
   }
   addCourse(){
-
+    this.visible = this.visible?false:true;
 
   }
   onSubmitCourse(){
-    this.courseService.addCourse(this.empForm.value).subscribe(
-      (res)=>{
-        console.log(res);
-        this.getCourses();
-      },
-      (err)=>{
-        console.log(err);
+    if (this.editMode){
+      this.editMode=false;
+      this.courseService.updateCourse(this.empForm.value).subscribe(
+        (res)=>{
+          this.getCourses();
+        },
+        (err)=>{
+          console.log(err);
+        }
+      )
 
-      }
-    )
+    }else{
+      this.courseService.addCourse(this.empForm.value).subscribe(
+        (res)=>{
+          console.log(res);
+          this.getCourses();
+        },
+        (err)=>{
+          console.log(err);
+  
+        }
+      )
+    }
 
+    this.visible = this.visible?false:true;
     
   }
   onDeleteCourse(id:any){
@@ -59,7 +82,10 @@ export class CourseComponent implements OnInit {
     )
 
   }
-  onEditCourse(id:any){
+  onEditCourse(course:Course){
+    this.visible = this.visible?false:true;
+    this.editMode=true;
+    this.empForm.patchValue(course);
 
   }
   getCourses(){

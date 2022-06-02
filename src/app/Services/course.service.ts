@@ -18,4 +18,8 @@ export class CourseService {
     console.log('http://localhost:3000/courses/'+id);
     return this.http.delete('http://localhost:3000/courses/'+id);
   }
+  updateCourse(course:Course){
+    return this.http.patch('http://localhost:3000/courses/'+course._id,{});
+
+  }
 }
