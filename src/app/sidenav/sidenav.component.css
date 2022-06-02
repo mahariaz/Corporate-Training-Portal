@@ -1,0 +1,14 @@
+.logo{
+    text-align: center;
+    padding:2.6rem 1rem;
+}
+.mat-divider{
+    border-top-width: 2px;
+    border-color: white;
+}
+.mat-list-item{
+    color: #94a3b8 !important;
+    font-size:0.8rem;
+    height:44px !important;
+
+}

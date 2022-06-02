@@ -7,14 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="limiter">
+	<div class="move-to-dash" *ngIf="adminExists">
+		<app-dashboard></app-dashboard>
+		
+	</div>
+	<div class="show-login-page" *ngIf="!adminExists">
+    <div class="limiter" *ngIf="!adminExists">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="/assets/images/img-01.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form">
+				<div class="login100-form">
 					<span class="login100-form-title">
 						Login
 					</span>
@@ -39,7 +44,9 @@
 						<button class="login100-form-btn" (click)="loginClicked(email,password)">
 							Login
 						</button>
+
 					</div>
+
 
 					<div class="text-center p-t-12">
 						<span class="txt1">
@@ -56,14 +63,23 @@
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>
-				</form>
+				</div>
 			</div>
 		</div>
 	</div>
 	
 	
-
+</div>
 
     
 </body>
+
 </html>
+
+<!-- <input class="i" type="text" vaue="" #email>
+<input class="i" type="text" value="" #pass>
+<button class="button" type="button" value="submit" (click)="loginClicked(email,pass)"></button>
+<div class="move-to-dash" *ngIf="adminExists">
+	<app-dashboard></app-dashboard>
+	
+</div> -->

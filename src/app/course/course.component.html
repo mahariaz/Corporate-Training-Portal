@@ -1,1 +1,58 @@
-<p>course works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <button value="+" name="add"  (click)="addCourse()">+</button>
+    <div class="row" >
+        <div class="card" style="width: 18rem;" *ngFor="let st of courseArray" >
+    
+          
+        
+            <div class="try"   type="button" (click)="onSelectCourse(st)" >
+              <p class="card-header">Featured</p>
+              <img src="/assets/images/dp1.jiff" class="card-img-top" alt="">
+              <div class="card-body">
+                <h5 class="card-title">{{st.courseName}}</h5>
+                <p id="price">PKR {{st.price}} crore</p>
+     
+    
+                <i class="fa-solid fa-pen-to-square"></i>
+    
+                
+              </div>
+           
+            </div>
+         
+            <div class="ed">
+            <button id="b1" type="button" (click)="onDeleteCourse(st._id)"><i class="fa fa-trash" style="font-size:15px;"></i></button>
+            <button id="b2" type="button" (click)="onEditCourse(st)"><i class="fa fa-pencil" style="font-size:15px;"></i></button>
+            </div>
+        </div>
+    
+      </div>
+    
+            <form [formGroup]="empForm">
+              <label for="courseName">courseName:</label><br>
+              <input type="text" formControlName="courseName" id="courseName" name="courseName" value=""><br>
+              <label for="Overview">Overview:</label><br>
+              <input type="text" formControlName="overview" id="overview" name="overview" value=""><br>
+              <label for="startDate">startDate:</label><br>
+              <input type="text" formControlName="startDate" id="startDate" name="startDate" value=""><br>
+              <label for="endDate">endDate:</label><br>
+              <input type="text" formControlName="endDate" id="endDate" name="endDate" value=""><br>
+              <label for="crHrs">crHrs:</label><br>
+              <input type="text" formControlName="crHrs" id="crHrs" name="crHrs" value=""><br>
+              <label for="price">price:</label><br>
+              <input type="text" formControlName="price" id="price" name="price" value=""><br>
+              <button value="submit" (click)="onSubmitCourse()">Submit</button>
+            </form>
+    
+    
+</body>
+</html>

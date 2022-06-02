@@ -1,26 +1,4 @@
-/* 
-@font-face {
-    font-family: Poppins-Regular;
-    src: url('../fonts/poppins/Poppins-Regular.ttf'); 
-  }
-  
-  @font-face {
-    font-family: Poppins-Bold;
-    src: url('../fonts/poppins/Poppins-Bold.ttf'); 
-  }
-  
-  @font-face {
-    font-family: Poppins-Medium;
-    src: url('../fonts/poppins/Poppins-Medium.ttf'); 
-  }
-  
-  @font-face {
-    font-family: Montserrat-Bold;
-    src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
-  }
-   */
-  /*//////////////////////////////////////////////////////////////////
-  [ RESTYLE TAG ]*/
+
   
   * {
       margin: 0px; 
@@ -33,7 +11,6 @@
       font-family: Poppins-Regular, sans-serif;
   }
   
-  /*---------------------------------------------*/
   a {
       font-family: Poppins-Regular;
       font-size: 14px;
@@ -55,7 +32,7 @@
     color: #57b846;
   }
   
-  /*---------------------------------------------*/
+
   h1,h2,h3,h4,h5,h6 {
       margin: 0px;
   }
@@ -74,7 +51,7 @@
   }
   
   
-  /*---------------------------------------------*/
+
   input {
       outline: none;
       border: none;
@@ -109,7 +86,7 @@
   textarea::-moz-placeholder { color: #999999; }
   textarea:-ms-input-placeholder { color: #999999; }
   
-  /*---------------------------------------------*/
+
   button {
       outline: none !important;
       border: none;
@@ -125,8 +102,7 @@
   }
   
   
-  /*//////////////////////////////////////////////////////////////////
-  [ Utility ]*/
+
   .txt1 {
     font-family: Poppins-Regular;
     font-size: 13px;
@@ -142,9 +118,7 @@
   }
   
   
-  /*//////////////////////////////////////////////////////////////////
-  [ login ]*/
-  
+
   .limiter {
     width: 100%;
     margin: 0 auto;
@@ -162,11 +136,6 @@
     justify-content: center;
     align-items: center;
     padding: 15px;
-    background: #9053c7;
-    background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-    background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-    background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-    background: linear-gradient(-135deg, #c850c0, #4158d0);
   }
   
   .wrap-login100 {
@@ -185,8 +154,7 @@
     padding: 177px 130px 33px 95px;
   }
   
-  /*------------------------------------------------------------------
-  [  ]*/
+
   .login100-pic {
     width: 316px;
   }
@@ -195,9 +163,7 @@
     max-width: 100%;
   }
   
-  
-  /*------------------------------------------------------------------
-  [  ]*/
+
   .login100-form {
     width: 290px;
   }
@@ -215,7 +181,7 @@
   }
   
   
-  /*---------------------------------------------*/
+
   .wrap-input100 {
     position: relative;
     width: 100%;
@@ -238,8 +204,7 @@
   }
   
   
-  /*------------------------------------------------------------------
-  [ Focus ]*/
+
   .focus-input100 {
     display: block;
     position: absolute;
@@ -302,8 +267,7 @@
     padding-left: 28px;
   }
   
-  /*------------------------------------------------------------------
-  [ Button ]*/
+
   .container-login100-form-btn {
     width: 100%;
     display: -webkit-box;
@@ -348,9 +312,7 @@
   
   
   
-  /*------------------------------------------------------------------
-  [ Responsive ]*/
-  
+
   
   
   @media (max-width: 992px) {
@@ -388,8 +350,7 @@
   }
   
   
-  /*------------------------------------------------------------------
-  [ Alert validate ]*/
+
   
   .validate-input {
     position: relative;
