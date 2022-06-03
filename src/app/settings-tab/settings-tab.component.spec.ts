@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CourseTabsComponent } from './course-tabs.component';
+import { SettingsTabComponent } from './settings-tab.component';
 
-describe('CourseTabsComponent', () => {
-  let component: CourseTabsComponent;
-  let fixture: ComponentFixture<CourseTabsComponent>;
+describe('SettingsTabComponent', () => {
+  let component: SettingsTabComponent;
+  let fixture: ComponentFixture<SettingsTabComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CourseTabsComponent ]
+      declarations: [ SettingsTabComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CourseTabsComponent);
+    fixture = TestBed.createComponent(SettingsTabComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -46,8 +46,11 @@ export class CourseComponent implements OnInit {
   onSubmitCourse(){
     if (this.editMode){
       this.editMode=false;
+      
       this.courseService.updateCourse(this.empForm.value).subscribe(
         (res)=>{
+          console.log("inside if check");    
+          console.log(res);
           this.getCourses();
         },
         (err)=>{

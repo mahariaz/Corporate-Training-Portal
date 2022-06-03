@@ -17,7 +17,9 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CourseSettingsComponent } from './course-settings/course-settings.component';
-import { CourseTabsComponent } from './course-tabs/course-tabs.component';
+import { SettingsTabComponent } from './settings-tab/settings-tab.component';
+import { AssessmentTabComponent } from './assessment-tab/assessment-tab.component';
+import { UsersTabComponent } from './users-tab/users-tab.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,9 @@ import { CourseTabsComponent } from './course-tabs/course-tabs.component';
     SidenavComponent,
     HeaderComponent,
     CourseSettingsComponent,
-    CourseTabsComponent
+    SettingsTabComponent,
+    AssessmentTabComponent,
+    UsersTabComponent
   ],
   imports: [
     HttpClientModule,

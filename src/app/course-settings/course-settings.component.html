@@ -1,13 +1,35 @@
-<!-- <mat-drawer-container>
-    <mat-drawer mode="side" opened="true">
-        <app-course-tabs></app-course-tabs>
-    </mat-drawer>
-    <mat-drawer-content>
-        <app-header></app-header>
-        <router-outlet></router-outlet>
-    
-    </mat-drawer-content>
-</mat-drawer-container> -->
 
-<app-course-tabs></app-course-tabs>
-<router-outlet></router-outlet>
+
+<!-- <app-course-tabs></app-course-tabs>
+<router-outlet></router-outlet> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="main-nav">
+        <label class="logo">Maha Riaz</label>
+        <ul>
+            <li><button class="button" type="button" (click)="settingsClicked()">Settings</button></li>
+            <li><button class="button" type="button" (click)="materialsClicked()">Materials</button></li>
+            <li><button class="button" type="button" (click)="usersClicked()">Users</button></li>
+
+        </ul>
+    </nav>
+    <div class="calling-settings-tab" *ngIf="isSettingsClicked">
+        <app-settings-tab [d1]="data1"></app-settings-tab>
+    </div>
+    <div class="calling-users-tab" *ngIf="isUsersClicked">
+        <app-users-tab></app-users-tab>
+    </div>
+    <div class="calling-assessment-tab" *ngIf="ismaterialsClicked">
+        <app-assessment-tab></app-assessment-tab>
+    </div>
+    <!--getting the input-->
+    <p>{{d.courseName}}</p>
+</body>
+</html>
