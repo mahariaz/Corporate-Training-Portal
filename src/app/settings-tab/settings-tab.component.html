@@ -1,5 +1,23 @@
-<p>settings-tab works!</p>
-<h1>{{d1.courseName}}</h1>
+
+<!-- <h1>{{d1.courseName}}</h1>
 <h1>{{d1.startDate}}</h1>
 <h1>{{d1.endDate}}</h1>
-<h1>{{d1.crHrs}}</h1>
+<h1>{{d1.crHrs}}</h1> -->
+<div class="form1">
+<form [formGroup]="empForm">
+    <label for="courseName">courseName:</label><br>
+    <input type="text" formControlName="courseName" id="courseName" name="courseName" value=""><br>
+    <label for="Overview">Overview:</label><br>
+    <input type="text" formControlName="overview" id="overview" name="overview" value=""><br>
+    <label for="startDate">startDate:</label><br>
+    <input type="text" formControlName="startDate" id="startDate" name="startDate" value=""><br>
+    <label for="endDate">endDate:</label><br>
+    <input type="text" formControlName="endDate" id="endDate" name="endDate" value=""><br>
+    <label for="crHrs">crHrs:</label><br>
+    <input type="text" formControlName="crHrs" id="crHrs" name="crHrs" value=""><br>
+    <label for="price">price:</label><br>
+    <input type="text" formControlName="price" id="price" name="price" value=""><br>
+    
+    <button class="myButton" type="submit" (click)="onEditCourse()">Submit</button>
+  </form>
+</div>

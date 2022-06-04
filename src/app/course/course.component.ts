@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../Models/models';
 import { CourseService } from '../Services/course.service';
+import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-course',
@@ -8,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./course.component.css']
 })
 export class CourseComponent implements OnInit {
+  url='http://localhost:3000/courses';
   data:any;
   public empForm!: FormGroup;
   courseArray!:Course[];
@@ -15,10 +17,11 @@ export class CourseComponent implements OnInit {
   visible:boolean = true;
   mvisible:boolean = true;
   buttonShow:boolean=true;
-  constructor(private courseService:CourseService,private fb:FormBuilder) { }
+  constructor(private courseService:CourseService,private fb:FormBuilder,private http :HttpClient) { }
 
   ngOnInit(): void {
     this.getCourses();
+    
     this.empForm=this.fb.group({
       _id:[''],
       courseName:[],
@@ -47,28 +50,50 @@ export class CourseComponent implements OnInit {
     if (this.editMode){
       this.editMode=false;
       
-      this.courseService.updateCourse(this.empForm.value).subscribe(
-        (res)=>{
-          console.log("inside if check");    
+      this.http.patch(`${this.url}/${this.empForm.value._id}`,this.empForm.value).subscribe(
+      
+        (res) =>{
+          console.log("Editttt")
           console.log(res);
           this.getCourses();
         },
-        (err)=>{
+        (err) =>{
           console.log(err);
         }
       )
+      
+      // this.courseService.updateCourse(this.empForm.value).subscribe(
+      //   (res)=>{
+      //     console.log("inside if check");    
+      //     console.log(res);
+      //     this.getCourses();
+      //   },
+      //   (err)=>{
+      //     console.log(err);
+      //   }
+     // )
 
     }else{
-      this.courseService.addCourse(this.empForm.value).subscribe(
-        (res)=>{
+      console.log("adddddd")
+      this.http.post(`${this.url}`,this.empForm.value).subscribe(
+
+        (res) =>{
           console.log(res);
-          this.getCourses();
         },
-        (err)=>{
+        (err) =>{
           console.log(err);
-  
         }
       )
+      // this.courseService.addCourse(this.empForm.value).subscribe(
+      //   (res)=>{
+      //     console.log(res);
+      //    // this.getCourses();
+      //   },
+      //   (err)=>{
+      //     console.log(err);
+  
+      //   }
+      // )
     }
 
     this.visible = this.visible?false:true;
@@ -92,13 +117,19 @@ export class CourseComponent implements OnInit {
 
   }
   getCourses(){
-    this.courseService.getCourseList().subscribe((res:any)=>{
-      console.log(res);
+    this.http.get(`${this.url}`).subscribe((res:any) =>{
+     
       this.courseArray=res;
-    }
+      console.log(res);
+    })
+    // this.courseService.getCourseList().subscribe((res:any)=>{
+    //   console.log(res);
+    //   this.courseArray=res;
+    // }
 
-    )
+    // )
   }
+
 
 
 }

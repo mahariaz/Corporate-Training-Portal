@@ -8,6 +8,9 @@ mongoose.connect('mongodb://localhost:27017/training-db',(err)=>{
     }
 })
 
+const materialSchema = new mongoose.Schema({
+    file:{type:String}
+});
 const mySchema=mongoose.Schema({
     courseName:{type:String},
     overview:{type:String},
@@ -17,9 +20,12 @@ const mySchema=mongoose.Schema({
     price:{type:Number},
     username:{type:String},
     email:{type:String},
-    password:{type:String}
+    password:{type:String},
+    tempMaterial: materialSchema,
+    material:[materialSchema],
 
 });
+
 // const userSchema=mongoose.Schema({
 //     username:{type:String},
 //     email:{type:String},

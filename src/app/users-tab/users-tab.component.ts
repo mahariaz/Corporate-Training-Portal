@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
 
 @Component({
   selector: 'app-users-tab',
@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./users-tab.component.css']
 })
 export class UsersTabComponent implements OnInit {
-
+  @Input() d?: any;
+  data1:any;
   constructor() { }
 
   ngOnInit(): void {
+    this.data1=this.d;
   }
 
 }

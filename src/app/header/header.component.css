@@ -1,0 +1,10 @@
+
+.sticky{
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right,  #f6f7f7 0%,#f6f6f6 100%);
+    padding: 10px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}

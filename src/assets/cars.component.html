@@ -1,0 +1,269 @@
+<div class="container py-3" *ngIf="!add && !isShow">
+  <div class="row">
+    <div class="col-md-9">
+      <h4>Featured Used Cars</h4>
+    </div>
+
+    <div class="col ml-auto text-right" >
+      <button (click)="addcar()" type="button" class="btn btn-outline-success">
+        Add Cars
+      </button>
+      
+    </div>
+  </div>
+ </div>
+ <div>
+   <form>
+     <div>
+
+      <input type="file" name="image" (change)="handleFileInput($event)">
+     </div>
+    <br>
+    <div>
+      <button class="btn btn-outline-success" type="submit" (click)="onSubmit()">Upload</button>
+    </div>
+   </form>
+   <div>
+     <img src="../../assets/imgs/a1.jpg" >
+    <!-- *ngIf="urll !=''" -->
+    <object data="../../backend/upload/a1.png"  *ngIf="urll !=''" style="margin-left: 450px;" width="400" height="300"></object>
+   </div>
+ </div>
+<div *ngIf="!add && !isShow">
+  <div class="d-flex align-items-center h-100" style="margin-left: 70px;">
+    <div class="text-black">
+      <div class="grid-container">
+        <p *ngIf="cars.length==0" style="margin-left: 10px;">No Record in database!</p>
+        <p *ngIf="cars.length==0" style="margin-left: 10px;">Press the Add Cars button to insert data</p>
+        <div class="grid-item border" *ngFor="let item of cars; index as i">
+          <p style="font-size:14px; color:white; background-color: #ff0000;">Featured</p>
+          <img (click) = toggleDisplay1(item) src={{images_path[i]}} class="img-style"/>
+          <p style="font-size:14px; color:#0000a0;"> 
+            {{item.name}} <br>
+            <span style="color: #ff0000">{{item.price}}</span>
+            <br> 
+            <span style="color: gray">{{item.city}}</span>
+            <br>
+           
+            <button (click)="updateCar(item)" type="button" class="btn btn-outline-info button1-style">Edit</button>
+            <button (click)="deleteCars(item.name,item.vehicletype)" type="button" class="btn btn-outline-danger button2-style">Delete</button>
+          </p>
+    </div>
+  </div>
+    </div>
+  </div>
+  </div>
+
+
+  <br>
+
+  <div class="container py-3"  *ngIf="!add && !isShow">
+    <div class="row">
+      <div class="col-md-9">
+        <h4>Featured Used Bikes</h4>
+      </div>
+  
+      <div class="col ml-auto text-right">
+        <button (click)="addcar()" type="button" class="btn btn-outline-success">
+         Add Bikes
+        </button>
+        
+      </div>
+    </div>
+   </div>
+
+
+  <div *ngIf="!add && !isShow">
+    <div class="d-flex align-items-center h-100" style="margin-left: 70px;">
+      <div class="text-black">
+        <div class="grid-container">
+          <p *ngIf="bikes.length==0" style="margin-left: 10px;">No Record in database!</p>
+          <p *ngIf="bikes.length==0" style="margin-left: 10px;">Press the Add Bikes button to insert data</p>
+          <div class="grid-item border" *ngFor="let item of bikes;  index as i">
+            <p style="font-size:14px; color:white; background-color: #ff0000;">Featured</p>
+            <img (click) = toggleDisplay1(item) src={{vimages_path[i]}} class="img-style"/>
+            <p style="font-size:14px; color:#0000a0;"> 
+              {{item.name}} <br>
+              <span style="color: #ff0000">{{item.price}}</span>
+              <br> 
+              <span style="color: gray">{{item.city}}</span>  
+              <br>
+            <button (click)="updateCar(item)" type="button" class="btn btn-outline-info button1-style">Edit</button>
+            <button (click)="deleteCars(item.name,item.vehicletype)" type="button" class="btn btn-outline-danger button2-style">Delete</button>
+            </p>
+           </div>
+           
+  
+      </div>
+    </div>
+    </div>
+    </div>
+
+
+  <!-- <app-carinfo *ngIf="isShow"></app-carinfo> -->
+  {{clearvar()}}
+  
+<hr />
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">{{editModel?'Update' : 'Add'}} Information</h4>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="empForm">
+          <label for="name">Name:</label><br>
+          <input type="text" formControlName="name" id="name" name="name" value=""><br>
+          <label for="price">Price:</label><br>
+          <input type="text" formControlName="price" id="price" name="price" value=""><br>
+          <label for="city">City:</label><br>
+          <input type="text" formControlName="city" id="city" name="city" value=""><br>
+        </form>
+  
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-danger" 
+                (click)="closePopup()">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="add && !isShow">
+  <form [formGroup]="empForm">
+          <label for="vehicletype" style="margin-left:500px">Vehicle Type: </label>
+          <select id="vehicletype" name="vehicletype" formControlName="vehicletype" style="margin-left:20px">
+            <option value="bikes">bike</option>
+            <option value="cars">car</option>
+          </select> <br>
+          <label for="name" style="margin-left:20px">Name</label> 
+          <label for="price" style="margin-left:350px">Price:</label>
+          <label for="year" style="margin-left:350px">Year:</label><br>
+          
+          <input type="text" formControlName="name" id="name" name="name" value="" style="margin-left:20px">
+          <input type="text" formControlName="price" id="price" name="price" value="" style="margin-left:165px">
+          <input type="text" formControlName="year" id="year" name="year" value="" style="margin-left:165px"><br>
+          
+          <label for="city" style="margin-left:20px">City:</label>
+          <label for="update" style="margin-left:360px">Update:</label>
+          <label for="distance" style="margin-left:340px">Distance:</label><br>
+
+          <input type="text" formControlName="city" id="city" name="city" value="" style="margin-left:20px">
+          <input type="text" formControlName="update" id="update" name="update" value="" style="margin-left:165px">
+          <input type="text" formControlName="distance" id="dis" name="dis" value="" style="margin-left:165px"><br>
+
+          <label for="engine" style="margin-left:20px">Engine:</label>
+          <label for="type" style="margin-left:335px">Type:</label>
+          <label for="cartype" style="margin-left:355px">CarType:</label><br>
+
+          <input type="text" formControlName="engine" id="engine" name="engine" value="" style="margin-left:20px">
+          <input type="text" formControlName="type" id="type" name="type" value="" style="margin-left:165px">  
+          <input type="text" formControlName="cartype" id="cartype" name="cartype" value="" style="margin-left:165px"> <br>
+
+          <label for="regin" style="margin-left:20px">RegisteredIn:</label>
+          <label for="color" style="margin-left:290px">Color:</label>
+          <label for="bodytype" style="margin-left:345px">BodyType:</label><br>
+
+          <input type="text" formControlName="regin" id="regin" name="regin" value="" style="margin-left:20px">
+          <input type="text" formControlName="color" id="color" name="color" value="" style="margin-left:165px">
+          <input type="text" formControlName="bodytype" id="bodytype" name="bodytype" value="" style="margin-left:165px"><br>
+          
+          <label for="assembly" style="margin-left:20px">Assembly:</label>
+          <label for="loc" style="margin-left:310px">Location:</label>
+          <label for="f1" style="margin-left:330px">Feature1:</label><br>
+
+          <input type="text" formControlName="assembly" id="assembly" name="assembly" value="" style="margin-left:20px">
+          <input type="text" formControlName="loc" id="loc" name="loc" value="" style="margin-left:165px">
+          <input type="text" formControlName="f1" id="f1" name="f1" value="" style="margin-left:165px"><br>
+
+          <label for="f2" style="margin-left:20px">Feature2:</label>
+          <label for="f3" style="margin-left:320px">Feature3:</label>
+          <label for="f4" style="margin-left:320px">Feature4:</label><br>
+
+          <input type="text" formControlName="f2" id="f2" name="f2" value=""  style="margin-left:20px">
+          <input type="text" formControlName="f3" id="f3" name="f3" value=""  style="margin-left:165px">
+          <input type="text" formControlName="f4" id="f4" name="f4" value=""  style="margin-left:165px"><br>
+          
+          <label for="f5" style="margin-left:20px">Feature5:</label>
+          <label for="f6" style="margin-left:320px">Feature6:</label>
+          <label for="f7" style="margin-left:320px">Feature7:</label><br>
+
+          <input type="text" formControlName="f5" id="f5" name="f5" value="" style="margin-left:20px">
+          <input type="text" formControlName="f6" id="f6" name="f6" value="" style="margin-left:165px">
+          <input type="text" formControlName="f7" id="f7" name="f7" value="" style="margin-left:165px"><br>
+
+          <label for="f8" style="margin-left:20px">Feature8:</label>
+          <label for="f9" style="margin-left:320px">Feature9:</label>
+          <label for="f10" style="margin-left:320px">Feature10:</label><br>
+
+          <input type="text" formControlName="f8" id="f8" name="f8" value="" style="margin-left:20px"> 
+          <input type="text" formControlName="f9" id="f9" name="f9" value="" style="margin-left:165px">
+          <input type="text" formControlName="f10" id="f10" name="f10" value="" style="margin-left:165px"><br>
+
+          <br>
+          <label for="c1" style="margin-left:20px">Exterior & Body:</label>
+          <select id="c1" name="c1" formControlName="c1" style="margin-left:20px">
+            <option value="100">100%</option>
+            <option value="90">90%</option>
+            <option value="80">80%</option>
+            <option value="70">70%</option>
+          </select>
+          <label for="c2" style="margin-left:160px">Engine & transmission:</label>
+          <select id="c2" name="c2" formControlName="c2" style="margin-left:20px">
+            <option value="100">100%</option>
+            <option value="90">90%</option>
+            <option value="80">80%</option>
+            <option value="70">70%</option>
+          </select>
+
+          <label for="c3" style="margin-left:100px">Suspension:</label>
+          <select id="c3" name="c3" formControlName="c3" style="margin-left:20px">
+            <option value="100">100%</option>
+            <option value="90">90%</option>
+            <option value="80">80%</option>
+            <option value="70">70%</option>
+          </select>
+          <br>
+          <br>
+          <label for="c4" style="margin-left:20px">Interior:</label>
+          <select id="c4" name="c4" formControlName="c4" style="margin-left:20px">
+            <option value="100">100%</option>
+            <option value="90">90%</option>
+            <option value="80">80%</option>
+            <option value="70">70%</option>
+          </select>
+
+          <label for="c5" style="margin-left:230px">AC:</label>
+          <select id="c5" name="c5" formControlName="c5" style="margin-left:20px">
+            <option value="100">100%</option>
+            <option value="90">90%</option>
+            <option value="80">80%</option>
+            <option value="70">70%</option>
+          </select>
+          <br>
+         <br>
+          <label for="sphno" style="margin-left:20px">Seller Phone no:</label>
+          <label for="semail" style="margin-left:260px">Seller Email:</label>
+          <label for="sloc" style="margin-left:300px">Seller Location:</label><br>
+
+          <input type="text" formControlName="sphno" id="sphno" name="sphno" value="" style="margin-left:20px">
+          <input type="text" formControlName="semail" id="semail" name="semail" value="" style="margin-left:165px">
+          <input type="text" formControlName="sloc" id="sloc" name="sloc" value="" style="margin-left:165px"><br>
+         
+
+          <label for="scmmt" style="margin-left:20px">Seller Comments:</label>
+          <label for="scnthr" style="margin-left:240px">Seller Contact hrs:</label><br>
+          <input type="text" formControlName="scmmt" id="scmmt" name="scmmt" value="" style="margin-left:20px">
+          <input type="text" formControlName="scnthr" id="scnthr" name="scnthr" value="" style="margin-left:165px"><br>
+        </form>
+        <button type="button" value="submit" class="btn btn-danger pull-right" 
+        (click)="closePopup2()" style="margin-right:20px">Submit</button>
+</div>

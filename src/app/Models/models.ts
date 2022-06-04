@@ -5,7 +5,10 @@ export interface Course{
     startDate:string,
     endDate:string,
     crHrs:string,
-    price:string
+    price:string,
+    material: {
+        [file: string]: any
+    }
 }
 export interface User{
     _id:string,

@@ -9,7 +9,7 @@ export class CourseService {
 
   constructor(private http:HttpClient) { }
   addCourse(course:Course){
-    return this.http.post(this.url,course);
+    return this.http.post('http://localhost:3000/courses/material',course);
   }
   getCourseList(){
     return this.http.get<Course>(this.url);

@@ -1,23 +1,46 @@
-<mat-nav-list>
-    <div class="logo py-4">
-        <img src="../../assets/logo.png">
-
-    </div>
-   
-
-        
-        <h2 matSubheader class="mt-2">Applications</h2>
-        <a mat-list-item routerLink="/courses" routerLinkActive="list-item-active">
-            <mat-icon>home</mat-icon>Courses
-        </a>
-        <a mat-list-item routerLink="/learners" routerLinkActive="list-item-active">
-            <mat-icon>home</mat-icon>Learners
-        </a>
-        <a mat-list-item routerLink="/materials" routerLinkActive="list-item-active">
-            <mat-icon>home</mat-icon>Materials
-        </a>
-        <a mat-list-item routerLink="/assessments" routerLinkActive="list-item-active">
-            <mat-icon>home</mat-icon>Assessments
-        </a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href=
+    "https://fonts.googleapis.com/icon?family=Material+Icons&display=block" 
+            rel="stylesheet">
+</head>
+<body>
     
-</mat-nav-list>
+        <mat-nav-list>   
+            
+            <div class="menu">
+                <div class="image">
+                    <img src="/assets/images/menu-icon.png">
+                </div>
+                <div class="head">
+                    <h1>Menu</h1>
+                </div>
+                
+            </div>
+
+            <a mat-list-item routerLink="/courses" routerLinkActive="list-item-active">
+                <mat-icon>home</mat-icon>Courses
+            </a>
+            <a mat-list-item routerLink="/learners" routerLinkActive="list-item-active">
+                <mat-icon><span class="material-symbols-outlined">
+                    person </span></mat-icon>Learners
+            </a>
+            <a mat-list-item routerLink="/materials" routerLinkActive="list-item-active">
+                <mat-icon><span class="material-symbols-outlined">
+                    library_books</span></mat-icon>Materials
+            </a>
+            <a mat-list-item routerLink="/assessments" routerLinkActive="list-item-active">
+                <mat-icon><span class="material-symbols-outlined">
+                    article</span></mat-icon>Assessments
+            </a>
+        
+    </mat-nav-list>
+
+</body>
+</html>
+

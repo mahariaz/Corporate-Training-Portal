@@ -1,1 +1,17 @@
 <p>assessment-tab works!</p>
+<div>
+    <form>
+      <div>
+ 
+       <input type="file" name="image" (change)="uploadMaterial($event)">
+      </div>
+     <br>
+     <div>
+       <button class="btn btn-outline-success">Upload</button>
+     </div>
+    </form>
+</div>
+<div *ngFor="let m of d.material">
+  <p>..............</p>
+  <p>{{m.file}}</p>
+</div> 

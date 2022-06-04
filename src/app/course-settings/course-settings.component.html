@@ -1,7 +1,4 @@
 
-
-<!-- <app-course-tabs></app-course-tabs>
-<router-outlet></router-outlet> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,24 +9,27 @@
 </head>
 <body>
     <nav class="main-nav">
-        <label class="logo">Maha Riaz</label>
+        <label class="logo">Courses Settings</label>
         <ul>
-            <li><button class="button" type="button" (click)="settingsClicked()">Settings</button></li>
-            <li><button class="button" type="button" (click)="materialsClicked()">Materials</button></li>
-            <li><button class="button" type="button" (click)="usersClicked()">Users</button></li>
+            <li><button class="button" type="button" id="button1" (click)="settingsClicked()">Settings</button></li>
+            <li><button class="button" type="button" id="button2" (click)="materialsClicked()">Materials</button></li>
+            <li><button class="button" type="button"  id="button3" (click)="usersClicked()">Users</button></li>
 
         </ul>
     </nav>
     <div class="calling-settings-tab" *ngIf="isSettingsClicked">
-        <app-settings-tab [d1]="data1"></app-settings-tab>
+        <app-settings-tab [d]="data1"></app-settings-tab>
     </div>
     <div class="calling-users-tab" *ngIf="isUsersClicked">
-        <app-users-tab></app-users-tab>
+        <app-users-tab [d]="data1"></app-users-tab>
     </div>
     <div class="calling-assessment-tab" *ngIf="ismaterialsClicked">
-        <app-assessment-tab></app-assessment-tab>
+        <app-assessment-tab [d]="data1"></app-assessment-tab>
     </div>
-    <!--getting the input-->
-    <p>{{d.courseName}}</p>
+    <!--displaying the input as d.courseName-->
+    
+
+    
+
 </body>
 </html>
