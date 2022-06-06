@@ -34,7 +34,7 @@ router.post('/material',upload.single('material'),async(req,res) =>{
     console.log("njhu")
 
 
-    const course = new Course.Course();
+        const course = new Course.Course();
         course.courseName=req.body.courseName;
         course.overview=req.body.overview;
         course.startDate=req.body.startDate;
@@ -105,10 +105,74 @@ router.post("/", async (req, res) => {
         course.endDate=req.body.endDate;
         course.crHrs=req.body.crHrs;
         course.price=req.body.price;
+        
 		
 	await course.save()
 	res.send(course)
 })
+router.post("/:id/assessments",async (req, res) => {
+	const course = new Course.Course();
+        course.courseName=req.body.courseName;
+        course.overview=req.body.overview;
+        course.startDate=req.body.startDate;
+        course.endDate=req.body.endDate;
+        course.crHrs=req.body.crHrs;
+        course.price=req.body.price;
+        
+        course.assessment=[
+            {questions:
+                [
+                {questions:req.body.questions,
+                answer:req.body.answer}
+                ]
+            },
+            {time:req.body.time}
+        ]
+        
+       
+		
+	await course.save()
+	res.send(course)
+})
+router.patch("/:id/assessments", async (req, res) => {
+	try {
+		const course = await Course.Course.findOne(
+            { _id: req.params.id },
+            { $push: { assessment: {questions:[
+                {questions:req.body.questions,
+                answer:req.body.answer}] } }
+            }
+            )
+
+		if (req.body.courseName) {
+			course.courseName = req.body.courseName
+		}
+		if (req.body.overview) {
+			course.overview = req.body.overview
+		}
+        if (req.body.startDate) {
+			course.startDate = req.body.startDate
+		}
+        if (req.body.endDate) {
+			course.endDate = req.body.endDate
+		}
+        if (req.body.crHrs) {
+			course.crHrs = req.body.crHrs
+		}
+        if (req.body.price) {
+			course.price = req.body.price
+		}
+        
+        
+
+		await course.save()
+		res.send(course)
+	} catch {
+		res.status(404)
+		res.send({ error: "Post doesn't exist!" })
+	}
+})
+
 //get specific
 router.get("/:id", async (req, res) => {
 	const course = await Course.Course.findOne({ _id: req.params.id })
@@ -160,7 +224,12 @@ router.patch("/:id", async (req, res) => {
 // update
 router.patch("/:id/material",upload.single('material'), async (req, res) => {
 	try {
-		const course = await Course.Course.findOneAndUpdate({ _id: req.params.id },{ $push: { material: {file: req.file.path } } })
+		const course = await Course.Course.findOneAndUpdate(
+            { _id: req.params.id }
+            ,
+            { $push: { material: {file: req.file.path } }
+            }
+        )
 
 		if (req.body.courseName) {
 			course.courseName = req.body.courseName

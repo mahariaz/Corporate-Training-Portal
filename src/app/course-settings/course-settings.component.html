@@ -13,6 +13,7 @@
         <ul>
             <li><button class="button" type="button" id="button1" (click)="settingsClicked()">Settings</button></li>
             <li><button class="button" type="button" id="button2" (click)="materialsClicked()">Materials</button></li>
+            <li><button class="button" type="button" id="button2" (click)="assessmentClicked()">Assessment</button></li>
             <li><button class="button" type="button"  id="button3" (click)="usersClicked()">Users</button></li>
 
         </ul>
@@ -23,7 +24,10 @@
     <div class="calling-users-tab" *ngIf="isUsersClicked">
         <app-users-tab [d]="data1"></app-users-tab>
     </div>
-    <div class="calling-assessment-tab" *ngIf="ismaterialsClicked">
+    <div class="calling-material-tab" *ngIf="ismaterialsClicked">
+        <app-material-tab [d]="data1"></app-material-tab>
+    </div>
+    <div class="calling-assessment-tab" *ngIf="isAssessmentClicked">
         <app-assessment-tab [d]="data1"></app-assessment-tab>
     </div>
     <!--displaying the input as d.courseName-->

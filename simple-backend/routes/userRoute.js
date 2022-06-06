@@ -53,4 +53,19 @@ router.patch("/:id", async (req, res) => {
 		res.send({ error: "Post doesn't exist!" })
 	}
 })
+
+router.post("/:id/:coursename", async (req, res) => {
+	const user = new User.User();
+    user.username=req.body.username;
+    user.email=req.body.email;
+    user.password=req.body.password;
+	user.usercourse=[{
+			courseName: req.body.courseName,
+		}]
+
+
+	
+	await user.save()
+	res.send(user)
+})
 module.exports=router;

@@ -14,6 +14,7 @@ export class CourseSettingsComponent implements OnInit {
   ismaterialsClicked:boolean=false;
   isSettingsClicked:boolean=true;
   isUsersClicked:boolean=false;
+  isAssessmentClicked:boolean=false;
 
   constructor() { }
 
@@ -27,17 +28,28 @@ export class CourseSettingsComponent implements OnInit {
   this.isSettingsClicked=true;
   this.isUsersClicked=false;
   this.ismaterialsClicked=false;
+  this.isAssessmentClicked=false;
   }
   usersClicked(){
   this.isUsersClicked=true;
   this.ismaterialsClicked=false;
   this.isSettingsClicked=false;
+  this.isAssessmentClicked=false;
 
   }
   materialsClicked(){
   this.ismaterialsClicked=true;
   this.isSettingsClicked=false;
   this.isUsersClicked=false;
+  this.isAssessmentClicked=false;
+  
+  }
+  assessmentClicked(){
+    this.isAssessmentClicked=true;
+    this.isSettingsClicked=false;
+    this.isUsersClicked=false;
+    this.ismaterialsClicked=false;
+
   }
 
 }

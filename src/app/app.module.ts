@@ -20,6 +20,11 @@ import { CourseSettingsComponent } from './course-settings/course-settings.compo
 import { SettingsTabComponent } from './settings-tab/settings-tab.component';
 import { AssessmentTabComponent } from './assessment-tab/assessment-tab.component';
 import { UsersTabComponent } from './users-tab/users-tab.component';
+import { LearnerComponent } from './learner/learner.component';
+import { CertificateComponent } from './certificate/certificate.component';
+import { CourseinfoComponent } from './courseinfo/courseinfo.component';
+import { CurrentcourseComponent } from './currentcourse/currentcourse.component';
+import { MaterialTabComponent } from './material-tab/material-tab.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +36,12 @@ import { UsersTabComponent } from './users-tab/users-tab.component';
     CourseSettingsComponent,
     SettingsTabComponent,
     AssessmentTabComponent,
-    UsersTabComponent
+    UsersTabComponent,
+    LearnerComponent,
+    CertificateComponent,
+    CourseinfoComponent,
+    CurrentcourseComponent,
+    MaterialTabComponent
   ],
   imports: [
     HttpClientModule,

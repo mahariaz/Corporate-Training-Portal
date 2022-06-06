@@ -1,0 +1,147 @@
+<p>learner works!</p>
+
+
+<html>
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      </head>
+    <style>
+    .topnav {
+        background-color: rgb(20, 168, 173);
+        overflow: hidden;
+        align-content: center;
+      }
+      
+      /* Style the links inside the navigation bar */
+      .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 20px 70px;
+        text-decoration: none;
+        font-size: 17px;
+      }
+      
+      /* Change the color of links on hover */
+      .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+        text-decoration: underline;
+      }
+      
+      /* Add a color to the active/current link */
+      .topnav a.active {
+        background-color: #38866a;
+        color: white;
+      }
+
+      div .row{
+  background-color: rgb(97, 151, 138,0.3);
+  
+}
+div .col{
+    background-color: rgb(98, 134, 125);
+    }
+    </style>
+      
+      
+      <body>
+    
+    
+        <div class="topnav">
+            <a class="active" href="learner.component.html">DashBoard</a>
+            <a href="">Certificates</a>
+            <a href="">Incomplete Courses</a>
+          </div> 
+    
+    
+          <div class="container">
+            <div class="row bg-info">
+                <div class="col">
+                    <h3><b>Newly Introduced Courses</b></h3>
+                    
+                </div>
+              </div>
+              <br>
+            <div class="container">
+              <div class="row" >
+                <div class="col-sm-6 bg-success">
+                  <h3><b>HTML Begginer Course</b></h3>
+                <img src="/assets/images/html.png" width="30%" height="30%">
+                <div><b>PKR</b> 50k</div>
+                <div><b>Start Date:</b> 20- 02-2023</div>
+                <div><b>End Date :</b> 3-04-2022</div>
+                <div><b>Duration :</b> 1 month </div>
+                <div><b>Credit Hours :</b>  2</div>
+                <a  class="btn btn-primary " (click)="ShowCourse()">Register </a>
+            
+                </div>
+
+
+
+              </div>
+            </div> 
+  
+            <br>
+            
+            <div class="container">
+
+                <div class="row bg-info">
+                    <div class="col">
+                        <h3><b>Currently Enrolled Courses</b></h3>
+                        
+                    </div>
+                  </div>
+                  <br>
+                <div class="row" >
+                  <div class="col-sm-6 bg-success">
+                    <h3><b>HTML Begginer Course</b></h3>
+                  <img src="/assets/images/html.png" width="30%" height="30%">
+                  <div><b>Hours Completed</b> 6</div>
+                  <div><b>End Date :</b> 3-04-2022</div>
+                  <div><b>Total Hours :</b>  25</div>
+                  <a  class="btn btn-primary " (click)="GoToCourse()">Continue To Learn</a>
+              
+                  </div>
+                </div>
+              </div> 
+
+              <br>
+              <div class="container">
+                <div class="row bg-info">
+                    <div class="col">
+                        <h3><b>Certificates</b></h3>
+                        
+                    </div>
+                  </div>
+                  <br>
+                <div class="row" >
+                  <div class="col-sm-6 bg-success">
+                    <h3><b>HTML Begginer Course</b></h3>
+                  <img src="/assets/images/cert.jpg" width="30%" height="30%">
+                  <div><b>Status</b> Completed</div>
+                  <a  class="btn btn-primary " (click)="ShowCert()">See Details </a>
+              
+                  </div>
+
+                </div>
+              </div> 
+
+
+              <br>
+          </div>
+          <app-courseinfo *ngIf="showModel"></app-courseinfo>
+          <app-currentcourse *ngIf="showCourse"></app-currentcourse>
+          <app-certificate *ngIf="showCert"></app-certificate>
+        
+      </body>
+  
+  </html>
+    
+      
+   

@@ -11,6 +11,21 @@ mongoose.connect('mongodb://localhost:27017/training-db',(err)=>{
 const materialSchema = new mongoose.Schema({
     file:{type:String}
 });
+const userSchema = new mongoose.Schema({
+    CourseName:{type:String}
+});
+const questionschema = new mongoose.Schema({
+    questions:{type:String},
+    answer:{type:String}
+    
+});
+
+const aschema = new mongoose.Schema({
+    tempAsses: questionschema,
+    questions:[questionschema],
+    time:{type:String}
+    
+});
 const mySchema=mongoose.Schema({
     courseName:{type:String},
     overview:{type:String},
@@ -23,16 +38,14 @@ const mySchema=mongoose.Schema({
     password:{type:String},
     tempMaterial: materialSchema,
     material:[materialSchema],
+    tempUser: userSchema,
+    usercourse:[userSchema],
+    tempAsses: aschema,
+    assessment:[aschema]
+
 
 });
 
-// const userSchema=mongoose.Schema({
-//     username:{type:String},
-//     email:{type:String},
-//     password:{type:String}
-
-
-// });
 const Course=new mongoose.model("Course",mySchema);
 const User=new mongoose.model("User",mySchema);
 module.exports={
