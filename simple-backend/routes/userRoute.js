@@ -68,4 +68,45 @@ router.post("/:id/:coursename", async (req, res) => {
 	await user.save()
 	res.send(user)
 })
+// const course = await Course.Course.findOneAndUpdate(
+// 	{ _id: req.params.id },
+// 	{ $push: { assessment:{
+// 		time:req.body.time,
+// 		questions:[
+// 		{questions:req.body.questions,
+// 		answer1:req.body.answer1,
+// 		answer2:req.body.answer2,
+// 		answer3:req.body.answer3,
+// 		correctans:req.body.correctans
+// 	}]  }}
+// 	}
+// 	)
+router.patch("/:id/:coursename", async (req, res) => {
+	console.log(req.body.courseName);
+	const user = await User.User.findOneAndUpdate(
+		{ _id: req.params.id },
+		{
+			$push:{usercourse:
+				
+					{
+						CourseName:req.body.CourseName
+					}
+			}
+		}
+
+		)
+
+		if (req.body.username) {
+			user.username = req.body.username
+		}
+		if (req.body.email) {
+			user.email = req.body.email
+		}
+        if (req.body.password) {
+			user.password = req.body.password
+		}
+	
+	await user.save()
+	res.send(user)
+})
 module.exports=router;

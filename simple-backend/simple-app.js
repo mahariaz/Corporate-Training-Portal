@@ -16,14 +16,17 @@ const userSchema = new mongoose.Schema({
 });
 const questionschema = new mongoose.Schema({
     questions:{type:String},
-    answer:{type:String}
+    answer1:{type:String},
+    answer2:{type:String},
+    answer3:{type:String},
+    correctans:{type:String}
     
 });
 
 const aschema = new mongoose.Schema({
     tempAsses: questionschema,
     questions:[questionschema],
-    time:{type:String}
+  
     
 });
 const mySchema=mongoose.Schema({

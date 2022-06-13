@@ -7,16 +7,23 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   adminExists:boolean = false;
+  userExists:boolean=false;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
   loginClicked(email:HTMLInputElement,password:HTMLInputElement){
+    this.userExists=true;
 
-    this.adminExists = true;
-    console.log(this.adminExists);
     
  
+
+  }
+  adminLogin(){
+    // this.router.navigateByUrl('/dashboard');
+    this.adminExists=true;
+    
+
 
   }
 

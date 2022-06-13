@@ -61,34 +61,29 @@ div .col{
     
     
           <div class="container">
-            <div class="row bg-info">
+
+
+            <div class="container">
+              <div class="row bg-info">
                 <div class="col">
                     <h3><b>Newly Introduced Courses</b></h3>
-                    
                 </div>
               </div>
-              <br>
-            <div class="container">
               <div class="row" >
-                <div class="col-sm-6 bg-success">
-                  <h3><b>HTML Begginer Course</b></h3>
+                <div class="col-sm-6 bg-success" *ngFor="let st of courseArray">
+                  <h3><b>{{st.courseName}}</b></h3>
                 <img src="/assets/images/html.png" width="30%" height="30%">
-                <div><b>PKR</b> 50k</div>
-                <div><b>Start Date:</b> 20- 02-2023</div>
-                <div><b>End Date :</b> 3-04-2022</div>
-                <div><b>Duration :</b> 1 month </div>
-                <div><b>Credit Hours :</b>  2</div>
-                <a  class="btn btn-primary " (click)="ShowCourse()">Register </a>
+                <div><b>Start Date:</b> {{st.startDate}}</div>
+                <div><b>End Date :</b> {{st.endDate}}</div>
+                <div><b>Overview :</b> {{st.overview}} </div>
+                <div><b>Credit Hours :</b>  {{st.crHrs}}</div>
+                <a  class="btn btn-primary " (click)="RegCourse(st._id,st.courseName)">Register for Course</a>
             
                 </div>
-
-
-
+              </div>             
+              <br>
               </div>
-            </div> 
-  
-            <br>
-            
+
             <div class="container">
 
                 <div class="row bg-info">
@@ -99,13 +94,18 @@ div .col{
                   </div>
                   <br>
                 <div class="row" >
-                  <div class="col-sm-6 bg-success">
-                    <h3><b>HTML Begginer Course</b></h3>
+                  <div class="col-sm-6 bg-success" *ngFor="let st of courseArray">
+                    <h3><b>{{st.courseName}}</b></h3>
                   <img src="/assets/images/html.png" width="30%" height="30%">
-                  <div><b>Hours Completed</b> 6</div>
-                  <div><b>End Date :</b> 3-04-2022</div>
-                  <div><b>Total Hours :</b>  25</div>
-                  <a  class="btn btn-primary " (click)="GoToCourse()">Continue To Learn</a>
+                  <div><b>Start Date:</b> {{st.startDate}}</div>
+                  <div><b>End Date :</b> {{st.endDate}}</div>
+                  <div><b>Overview :</b> {{st.overview}} </div>
+                  <div><b>Credit Hours :</b>  {{st.crHrs}}</div>
+
+                  <label for="file">Course  progress:</label>
+                  <progress id="file" value="32" max="100"> d3 </progress>
+                  <a  class="btn btn-primary " (click)="GoToCourse(st)">Continue To Learn</a>
+                  
               
                   </div>
                 </div>
@@ -136,9 +136,10 @@ div .col{
               <br>
           </div>
           <app-courseinfo *ngIf="showModel"></app-courseinfo>
-          <app-currentcourse *ngIf="showCourse"></app-currentcourse>
           <app-certificate *ngIf="showCert"></app-certificate>
         
+          <app-currentcourse [d]="data1" *ngIf="showCourse"></app-currentcourse>
+          <!-- <app-users-tab [d]="data1"></app-users-tab> -->
       </body>
   
   </html>

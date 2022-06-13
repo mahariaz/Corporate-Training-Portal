@@ -1,1 +1,14 @@
-<p>asses tab</p>
+<form [formGroup]="empForm">
+  <label for="questions">Question:</label><br>
+  <input type="text" formControlName="questions" id="questions" name="questions" value=""><br>
+  <label for="answer1">Answer1:</label><br>
+  <input type="text" formControlName="answer1" id="answer1" name="answer1" value=""><br>
+  <label for="answer2">Answer2:</label><br>
+  <input type="text" formControlName="answer2" id="answer2" name="answer2" value=""><br>
+  <label for="answer3">Answer3:</label><br>
+  <input type="text" formControlName="answer3" id="answer3" name="answer3" value=""><br>
+  <label for="correctans">Correct Answer:</label><br>
+  <input type="text" formControlName="correctans" id="correctans" name="correctans" value=""><br>
+  <br>
+  <button type="submit" class="btn btn-danger" (click)="onSubmit()">Submit</button>
+</form>

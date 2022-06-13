@@ -123,10 +123,10 @@ router.post("/:id/assessments",async (req, res) => {
             {questions:
                 [
                 {questions:req.body.questions,
-                answer:req.body.answer}
+                answer:req.body.answer,
+                time:req.body.time}
                 ]
-            },
-            {time:req.body.time}
+            }
         ]
         
        
@@ -136,35 +136,23 @@ router.post("/:id/assessments",async (req, res) => {
 })
 router.patch("/:id/assessments", async (req, res) => {
 	try {
-		const course = await Course.Course.findOne(
+
+    
+        const course = await Course.Course.findOneAndUpdate(
             { _id: req.params.id },
-            { $push: { assessment: {questions:[
+            { $push: { assessment:{
+                time:req.body.time,
+                questions:[
                 {questions:req.body.questions,
-                answer:req.body.answer}] } }
+                answer1:req.body.answer1,
+                answer2:req.body.answer2,
+                answer3:req.body.answer3,
+                correctans:req.body.correctans
+            }]  }}
             }
             )
 
-		if (req.body.courseName) {
-			course.courseName = req.body.courseName
-		}
-		if (req.body.overview) {
-			course.overview = req.body.overview
-		}
-        if (req.body.startDate) {
-			course.startDate = req.body.startDate
-		}
-        if (req.body.endDate) {
-			course.endDate = req.body.endDate
-		}
-        if (req.body.crHrs) {
-			course.crHrs = req.body.crHrs
-		}
-        if (req.body.price) {
-			course.price = req.body.price
-		}
-        
-        
-
+	
 		await course.save()
 		res.send(course)
 	} catch {

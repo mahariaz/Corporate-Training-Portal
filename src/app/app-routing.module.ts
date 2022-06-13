@@ -5,6 +5,7 @@ import { CourseSettingsComponent } from './course-settings/course-settings.compo
 import { SettingsTabComponent } from './settings-tab/settings-tab.component';
 import { UsersTabComponent } from './users-tab/users-tab.component';
 import { AssessmentTabComponent } from './assessment-tab/assessment-tab.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'courses',pathMatch:'full'},
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path :"settings",component:CourseSettingsComponent},
   {path :"settingsTab",component:SettingsTabComponent},
   {path :"usersTab",component:UsersTabComponent},
-  {path :"materialTab",component:AssessmentTabComponent}
+  {path :"materialTab",component:AssessmentTabComponent},
+  {path :'dashboard',component:DashboardComponent}
 
 
   

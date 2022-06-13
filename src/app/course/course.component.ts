@@ -62,16 +62,7 @@ export class CourseComponent implements OnInit {
         }
       )
       
-      // this.courseService.updateCourse(this.empForm.value).subscribe(
-      //   (res)=>{
-      //     console.log("inside if check");    
-      //     console.log(res);
-      //     this.getCourses();
-      //   },
-      //   (err)=>{
-      //     console.log(err);
-      //   }
-     // )
+
 
     }else{
       console.log("adddddd")
@@ -79,21 +70,13 @@ export class CourseComponent implements OnInit {
 
         (res) =>{
           console.log(res);
+          this.getCourses();
         },
         (err) =>{
           console.log(err);
         }
       )
-      // this.courseService.addCourse(this.empForm.value).subscribe(
-      //   (res)=>{
-      //     console.log(res);
-      //    // this.getCourses();
-      //   },
-      //   (err)=>{
-      //     console.log(err);
-  
-      //   }
-      // )
+
     }
 
     this.visible = this.visible?false:true;
@@ -122,12 +105,7 @@ export class CourseComponent implements OnInit {
       this.courseArray=res;
       console.log(res);
     })
-    // this.courseService.getCourseList().subscribe((res:any)=>{
-    //   console.log(res);
-    //   this.courseArray=res;
-    // }
 
-    // )
   }
 
 

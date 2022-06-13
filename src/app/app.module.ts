@@ -25,6 +25,11 @@ import { CertificateComponent } from './certificate/certificate.component';
 import { CourseinfoComponent } from './courseinfo/courseinfo.component';
 import { CurrentcourseComponent } from './currentcourse/currentcourse.component';
 import { MaterialTabComponent } from './material-tab/material-tab.component';
+import { QuestionScreenComponent } from './question-screen/question-screen.component';
+import { ChangeBackgroundColorDirective } from './change-background-color.directive';
+import { NgChartsModule } from 'ng2-charts';
+import { ChartDataset } from 'chart.js';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +46,9 @@ import { MaterialTabComponent } from './material-tab/material-tab.component';
     CertificateComponent,
     CourseinfoComponent,
     CurrentcourseComponent,
-    MaterialTabComponent
+    MaterialTabComponent,
+    QuestionScreenComponent,
+    ChangeBackgroundColorDirective
   ],
   imports: [
     HttpClientModule,
@@ -52,7 +59,8 @@ import { MaterialTabComponent } from './material-tab/material-tab.component';
     MatListModule,
     MatDividerModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgChartsModule
 
   ],
   providers: [],

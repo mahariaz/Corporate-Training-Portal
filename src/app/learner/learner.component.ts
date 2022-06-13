@@ -1,5 +1,10 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Course } from '../Models/models';
+import { CourseService } from '../Services/course.service';
+import { HttpClient } from '@angular/common/http';
+
+import { UserServiceService } from '../Services/user-service.service';
 
 @Component({
   selector: 'app-learner',
@@ -8,30 +13,98 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LearnerComponent implements OnInit {
 
+  @Input() d3?: any;
   showModel:boolean=false;
   showCourse:boolean=false;
   showCert:boolean=false;
+  courseArray!:Course[];
 
-  constructor() { 
+  data1:any;
+  url='http://localhost:3000/courses';
+  url2='http://localhost:3000/users';
+  editMode:boolean=false;
+  visible:boolean = true;
+  mvisible:boolean = true;
+  buttonShow:boolean=true;
+  usrId='629f6c6e7b471ec4a059a72e';
+
+
+  currentCourses :any;
+  userCourse:any;
+
+  constructor(private http:HttpClient) { 
 
   }
 
   ngOnInit(): void {
+
+    this.getCourses();
+    this.http.get(`${this.url2}/${this.usrId}`).subscribe(
+
+      (res) =>{
+        this.userCourse=res;
+        console.log('This is user',res);
+      },
+      (err) =>{
+        console.log("This is error",err);
+        console.log("this is after error");
+      }
+    )
+    
+
+
     
   }
 
-  ShowCourse()
+  getCourses(){
+    this.http.get(`${this.url}`).subscribe((res:any) =>{
+     
+      this.courseArray=res;
+      console.log(res);
+    })
+  }
+
+  RegCourse(id:any,courseName:any)
   {
 
     this.showModel=true;
+    this.showCert=false;
+    this.showCourse=false;
+    console.log(this.courseArray);
+    if(confirm("Do you want to Register this Course??"))
+    {
 
+      console.log(id,"name",courseName);
+      this.http.patch(`${this.url2}/${this.usrId}/${courseName}`,courseName).subscribe(
+        
+        (res) =>{
+          console.log(res);
+          
+        },
+        (err) =>{
+          console.log("This is error",err);
+          console.log("this is after error");
+        }
+      )
+    }
+    
     console.log('Show Course');
 
   }
-  GoToCourse()
+  GoToCourse(st:any)
   {
+
+
+    this.data1=st;
+    this.http.get(`${this.url}`,st.id).subscribe((res:any) =>{
+    this.courseArray=res;
+      console.log(res);
+    })
+
     console.log('Complete Remaining Course');
     this.showCourse=true;
+    this.showCert=false;
+    this.showModel=false;
 
   }
 
@@ -42,141 +115,3 @@ export class LearnerComponent implements OnInit {
   }
 
 }
-
-
-
-
-/*
-
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder,FormControl, FormGroup, Validators } from '@angular/forms';
-import { NgModule } from '@angular/core';
-import { VehicleService } from '../appServices/vehicle.service';
-
-import { Vehicle } from '../appModels/vehicle.model';
-
-
-@Component({
-  selector: 'app-vehicle',
-  templateUrl: './vehicle.component.html',
-  styleUrls: ['./vehicle.component.css']
-})
-
-export class VehicleComponent implements OnInit {
-
-  boolval =false;
-  showModel:boolean=false;
-  editMode:boolean=false;
-  vehicles:Vehicle[];
-
-  vehForm = new FormGroup({
-    name: new FormControl(),
-    modeln: new FormControl(),
-    engine: new FormControl(),
-    city: new FormControl(),
-    price: new FormControl(),
-    ctype: new FormControl(),
-    rating: new FormControl()
-  });
-
-  constructor(
-    private fb: FormBuilder,
-    private vehservice: VehicleService
-  ) { }
-
-  ngOnInit(): void {
-
-    this.getVehicles();
-    this.vehForm=this.fb.group({
-      name: [],
-            modeln: [Validators.required],
-            engine:[Validators.required],
-            city:[Validators.required],
-            price:[Validators.required],
-            ctype:[Validators.required],
-            rating:[]
-    })
-  }
-
-
-  onEditVehicle(veh:Vehicle)
-  {
-    this.showModel=true;
-    this.editMode=true;
-    this.vehForm.patchValue(veh);
-
-  }
-  onDeleteVehicle(id:any)
-  {
-    if(confirm("Do you want to delete this Vehicle??"))
-    {
-      this.vehservice.deleteVehicle(id).subscribe(
-        (res)=>{
-          console.log('Deleted Successfully');
-          this.getVehicles();
-          
-      },
-      (err)=>{
-        console.log(err);
-      }
-  
-      )
-    }
-    
-  }
-  getVehicles()
-  {
-    this.vehservice.getVehList().subscribe( (res:any)=>{
-      console.log(res);
-      this.vehicles=res;
-    })
-  }
-
-  onAddVehBtn()
-  {
-    this.showModel=true;
-  }
-
-  onAddVeh()
-  {
-    this.showModel=false;
-    if(this.editMode)
-    {
-      this.vehservice.updateVehicle(this.vehForm.value);
-    }
-
-    else
-    {
-      this.vehservice.addVehicle(this.vehForm.value)
-      this.vehservice.addVehicle(this.vehForm.value).subscribe(
-        (res)=>{
-          console.log(res);
-          this.getVehicles();
-      },
-      (err)=>{
-        console.log(err);
-      }
-      )
-  }
-  }
-  onClose()
-  {
-    this.showModel=false;
-    this.editMode=false;
-
-  }
-  closeForm()
-  {
-    this.editMode=false;
-
-  }
-  detail()
-  {
-    this.boolval=true;
-    
-  }
-
-  
-}
-
-*/

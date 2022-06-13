@@ -50,16 +50,38 @@ div .col{
 
       <body>
 
-        <div class="row" >
-            <div class="col-sm-6 bg-success">
-              <h3><b>HTML Begginer Course</b></h3>
-            <img src="/assets/images/html.png" width="30%" height="30%">
-            <div><b>Hours Completed</b> 6</div>
-            <div><b>End Date :</b> 3-04-2022</div>
-            <div><b>Total Hours :</b>  25</div>
-            <button >Continue To Learn</button>
+        <div class="container">
+          <div class="row bg-info">
+            <div class="col">
+                <h3><b>Complete the Course</b></h3>
             </div>
           </div>
+          <div class="row" >
+            <div class="col-sm-10 bg-success" >
+              <h3><b>{{data1.courseName}}</b></h3>
+            <img src="/assets/images/html.png" width="30%" height="30%">
+            <label for="file">Course  progress:</label>
+                  <progress id="file" value="matOpen" max="100"> 32% </progress>
+            <div><b>End Date :</b> {{data1.endDate}}</div>
+            <div><b>Overview :</b> {{data1.overview}} </div>
+            <div><b>Credit Hours :</b>  {{data1.crHrs}}</div>
+            <div><b>Credit Hours :</b>  {{data1.crHrs}}</div>
+              <div (click)="onMatClick()"><b>Materials :</b>  {{data1.file}}</div>
+            <div *ngFor="let m of d.material">
+              <p>{{m.file}}</p>
+              <object data="..\src\assets\Screenshot (116).png" width="300" height="200" (click)="onMatClick()"></object>
+            </div> 
+            <a  class="btn btn-primary " (click)="backtoDash()">Back to DashBoard</a>
+            <a  class="btn btn-primary " (click)="startAssessment()">Start Assessment</a>
+            <div class="goto-assessment" *ngIf="isassessmentButtonClicked" >
+              <app-question-screen></app-question-screen>
+            </div>
+        
+            </div>
+          </div>             
+          <br>
+          </div>
 
+          <app-learner [d3]="matOpen" *ngIf="dashboard"></app-learner>
       </body>
 </html>

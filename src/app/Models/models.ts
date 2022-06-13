@@ -9,6 +9,9 @@ export interface Course{
     material: {
         [file: string]: any
     }
+    assessments:{
+
+    }
 }
 export interface User{
     _id:string,

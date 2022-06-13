@@ -7,11 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-	<div class="move-to-dash" *ngIf="adminExists">
-		<app-dashboard></app-dashboard>
-		
-	</div>
-	<div class="show-login-page" *ngIf="!adminExists">
+
+
+	<ng-container *ngIf="!adminExists && !userExists" >
     <div class="limiter" *ngIf="!adminExists">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -46,7 +44,13 @@
 						</button>
 
 					</div>
-
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" (click)="adminLogin()"  >
+							Admin
+						</button>
+					</div>
+					<!-- <a routerLink="dashboard" class="nav-link" routerLinkActive="active">Add Employee</a> -->
+				
 
 					<div class="text-center p-t-12">
 						<span class="txt1">
@@ -69,17 +73,17 @@
 	</div>
 	
 	
-</div>
-
+</ng-container>
+<ng-container *ngIf="adminExists" >
+	<app-dashboard></app-dashboard>
+</ng-container>
+<ng-container *ngIf="userExists" >
+	<app-learner></app-learner>
+</ng-container>
     
 </body>
 
 </html>
 
-<!-- <input class="i" type="text" vaue="" #email>
-<input class="i" type="text" value="" #pass>
-<button class="button" type="button" value="submit" (click)="loginClicked(email,pass)"></button>
-<div class="move-to-dash" *ngIf="adminExists">
-	<app-dashboard></app-dashboard>
-	
-</div> -->
+
+
